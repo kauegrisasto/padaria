@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7A4E1D">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bread Pallace">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Bread Pallace | Peça pelo elevador</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F4EF;--ink:#3A2614;--muted:#5E4A38;--line:#E0D8C8;--card:#fff;--gold:#C9973F;--brown:#7A4E1D;--pist:#A3C585;--btn:#A3C585;--btn-ink:#3A2614;
+--serif:"Bodoni Moda","Didot",Georgia,serif;--sans:"Jost","Avenir Next","Helvetica Neue",Arial,sans-serif;
+box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1F140A;--ink:#F6F4EF;--muted:#CBBBA8;--line:#4A3523;--card:#2B1C10;--btn:#A3C585;--btn-ink:#3A2614}}
+:root[data-theme="dark"]{--bg:#1F140A;--ink:#F6F4EF;--muted:#CBBBA8;--line:#4A3523;--card:#2B1C10;--btn:#A3C585;--btn-ink:#3A2614}
+html.hc.hc{--bg:#fff;--ink:#000;--muted:#000;--line:#000;--card:#fff;--btn:#000;--btn-ink:#fff;--gold:#fff;--brown:#000;--pist:#fff}
+html{scroll-padding-top:84px;scroll-behavior:smooth}
+html.big{font-size:125%}
+html.calm{scroll-behavior:auto}html.calm *{transition:none!important}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(--sans);padding-bottom:84px}
+h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.15}
+p{margin:0}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px var(--bg)}
+header :focus-visible,html.hc header :focus-visible{outline-color:#fff;box-shadow:none}
+html.hc :focus-visible{outline-color:#000;outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--btn);color:var(--btn-ink);padding:10px 14px;z-index:99}
+.skip:focus{left:8px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+button{font:inherit;cursor:pointer;min-height:48px;min-width:48px}
+.btn{background:var(--btn);color:var(--btn-ink);border:2px solid var(--ink);padding:0 20px;font-weight:500;border-radius:8px}
+.ghost{background:transparent;color:inherit;border:2px solid currentColor;border-radius:8px;padding:0 14px}
+header.top{position:fixed;top:0;left:0;right:0;z-index:10;padding-top:env(safe-area-inset-top,0px);background:var(--brown);color:#F6F4EF;border-bottom:3px solid var(--gold)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.3rem;font-weight:700}
+.brand svg{width:34px;height:34px;color:#F6F4EF;--slash:var(--brown)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+header .ghost{color:#F6F4EF;min-height:44px}
+.badge{display:inline-block;min-width:1.4em;background:var(--pist);color:#3A2614;border-radius:99px;padding:0 6px;margin-left:6px;font-weight:500}
+html.hc header .badge{background:#fff}
+.hero{background:var(--brown);color:#F6F4EF;padding:44px 0 52px}
+.hero h1{font-size:clamp(2.8rem,9vw,5rem);font-weight:700;letter-spacing:-.01em}
+.hero .slogan{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3.4vw,1.9rem);color:var(--gold);margin-top:12px}
+.hero p.sub{margin-top:14px;max-width:46ch;font-weight:300;color:#EADFCF;font-size:1.15rem}
+.facts{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.facts li{border:1px solid var(--pist);border-radius:99px;padding:6px 16px;font-size:.95rem}
+section{padding:48px 0}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:500}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 26px}
+.tabs button{background:transparent;color:var(--ink);border:2px solid var(--line);border-radius:99px;padding:0 18px}
+.tabs button[aria-pressed="true"]{background:var(--btn);color:var(--btn-ink);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;gap:14px;padding:12px}
+.item .body{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.ph{display:block;flex:none;width:88px;height:88px;border-radius:10px;overflow:hidden;background-image:radial-gradient(circle at 28% 18%,rgba(255,255,255,.65),transparent 65%)}
+.ph svg,.ph img{display:block;width:100%;height:100%}
+.ph svg{padding:4px}
+.ph img{object-fit:cover}
+.th{flex:none;display:block;width:60px;height:60px;border-radius:10px;overflow:hidden}
+.th svg{display:block;width:100%;height:100%;padding:3px}
+.lt{display:flex;align-items:center;gap:12px}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.hero .wrap{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.art{width:min(300px,34vw);height:auto}
+@media (max-width:699px){.hero .wrap{grid-template-columns:1fr}.art{width:170px}}
+.item h3{font-size:1.1rem;font-weight:700}
+.item .d{color:var(--muted);font-size:.9rem;line-height:1.4;flex:1}
+.item .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.price{font-weight:500;font-size:1.1rem}
+.step{display:inline-flex;align-items:center;border:2px solid var(--ink);border-radius:8px}
+.step button{background:transparent;color:var(--ink);border:0;font-size:1.3rem}
+.step output{min-width:2ch;text-align:center;font-weight:500}
+.bar{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--line);z-index:9}
+.bar .btn{width:100%;max-width:960px;display:flex;justify-content:space-between;margin:0 auto}
+.bar[hidden]{display:none}
+.info{border-top:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
+.cards div{border:1px solid var(--line);border-radius:10px;padding:20px;background:var(--card)}
+.cards h3{font-size:1.2rem;margin-bottom:8px}
+.cards ol{margin:0;padding-left:1.2em}
+.cards p,.cards li{color:var(--muted)}
+footer{background:var(--brown);color:#EADFCF;padding:32px 0;font-size:.95rem}
+dialog{border:0;padding:0;background:var(--bg);color:var(--ink);width:min(560px,100%);max-height:92vh;border-radius:16px;margin:auto}
+dialog::backdrop{background:rgba(30,18,8,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg)}
+.dh h2{font-size:1.5rem}
+.db{padding:20px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tot{display:flex;justify-content:space-between;padding:8px 0}
+.tot.big2{font-weight:500;font-size:1.2rem;border-top:2px solid var(--ink);margin-top:6px;padding-top:12px}
+label,legend{display:block;font-weight:500;margin:18px 0 6px}
+fieldset{border:0;padding:0;margin:0}
+input[type=text],input[type=time],input[type=password],textarea{width:100%;min-height:48px;font:inherit;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--card);color:var(--ink)}
+input[aria-invalid="true"]{border-color:#B3261E}
+.err{color:#B3261E;font-size:.95rem;margin-top:4px}
+html.hc .err{color:#000;font-weight:500}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF8A80}}
+.opt{display:flex;align-items:center;gap:12px;min-height:48px;font-weight:400;margin:0}
+.opt input{width:24px;height:24px;accent-color:var(--ink)}
+.seq{list-style:none;padding:0;margin:20px 0}
+.seq li{padding:12px 0 12px 40px;position:relative;color:var(--muted)}
+.seq li::before{content:"";position:absolute;left:6px;top:15px;width:18px;height:18px;border-radius:50%;border:2px solid var(--line)}
+.seq li.done{color:var(--ink)}.seq li.done::before{background:var(--btn);border-color:var(--ink)}
+.seq li[aria-current="step"]{color:var(--ink);font-weight:500}.seq li[aria-current="step"]::before{border-color:var(--gold);background:var(--gold)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.empty{color:var(--muted);padding:24px 0}
+@media (min-width:700px){dialog{max-height:86vh}}
+@media (max-width:699px){dialog{margin:auto 0 0;border-radius:16px 16px 0 0;max-height:94vh}}
+header.top .wrap{padding-top:8px;padding-bottom:8px}
+.muted{color:var(--muted);font-size:.92rem}
+.note{color:var(--muted);font-size:.9rem;margin-top:18px}
+.ord{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0;background:var(--card)}
+.ord h3{font-size:1.1rem;margin-bottom:4px}
+.ord p{margin:4px 0}
+.st{display:inline-block;border:2px solid var(--ink);border-radius:99px;padding:0 12px;font-size:.9rem;font-weight:500;margin-right:8px}
+.top .wrap{transition:min-height .2s}
+.top .brand{transition:font-size .2s}
+header.top.sm .wrap{min-height:48px;padding-top:4px;padding-bottom:4px}
+header.top.sm .brand{font-size:1rem}
+header.top.sm .brand svg{width:26px;height:26px}
+header.top.sm .ghost{min-height:40px;font-size:.9rem;padding:0 10px}
+@media (max-width:699px){
+ header.top .wrap{flex-wrap:wrap;gap:6px 12px}
+ header.top .tools{width:100%;flex-wrap:nowrap}
+ header.top .tools .ghost{flex:1;min-width:0;padding:0 6px;font-size:.85rem}
+ header.top.sm .brand{display:none}
+ .badge{margin-left:4px}
+}
+html.big header.top .tools{flex-wrap:wrap}
+.a11y-fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;width:44px;height:44px;padding:0;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--ink);background:var(--bg);color:var(--ink);opacity:.8;transition:bottom .2s,opacity .2s}
+.a11y-fab:hover,.a11y-fab:focus-visible{opacity:1}
+body.hasbar .a11y-fab{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.item.off{opacity:.6}
+#staffDlg{width:min(760px,100%)}
+#stTabs{margin:0 0 16px}
+.pv{display:flex;align-items:center;gap:12px;margin-top:10px}.pv[hidden]{display:none}
+select{width:100%;min-height:48px;font:inherit;padding:10px 12px;border:2px solid var(--ink);border-radius:8px;background:var(--card);color:var(--ink)}
+input[type=file]{width:100%;min-height:48px;font:inherit}
+</style>
+</head>
+<body>
+<a class="skip" href="#cardapio">Pular para o cardápio</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-bag" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="44" ry="5" fill="#3A2614" opacity=".12"/><g transform="rotate(-18 60 46)"><rect x="12" y="34" width="96" height="24" rx="12" fill="#D9A55B" stroke="#A66F2B" stroke-width="2"/><g stroke="#F6E3B5" stroke-width="3" stroke-linecap="round"><path d="M32 52l8-14"/><path d="M50 52l8-14"/><path d="M68 52l8-14"/><path d="M86 52l8-14"/></g></g></symbol>
+<symbol id="i-fer" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="40" ry="5" fill="#3A2614" opacity=".12"/><ellipse cx="60" cy="48" rx="38" ry="28" fill="#C98A45" stroke="#8A5A24" stroke-width="2"/><path d="M36 42q24-16 48 0M34 54q26-14 52 0" fill="none" stroke="#F6E3B5" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="i-bri" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="38" ry="5" fill="#3A2614" opacity=".12"/><circle cx="60" cy="26" r="9" fill="#E4AE5C" stroke="#A66F2B" stroke-width="2"/><path d="M26 66V46q0-16 34-16t34 16v20q0 6-6 6H32q-6 0-6-6z" fill="#E4AE5C" stroke="#A66F2B" stroke-width="2"/><path d="M38 46q4-8 14-9" fill="none" stroke="#F6E3B5" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="i-cro" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="42" ry="5" fill="#3A2614" opacity=".12"/><g fill="#E2A650" stroke="#A66F2B" stroke-width="2"><ellipse cx="22" cy="58" rx="7" ry="12" transform="rotate(50 22 58)"/><ellipse cx="98" cy="58" rx="7" ry="12" transform="rotate(-50 98 58)"/><ellipse cx="36" cy="48" rx="12" ry="17" transform="rotate(30 36 48)"/><ellipse cx="84" cy="48" rx="12" ry="17" transform="rotate(-30 84 48)"/><ellipse cx="60" cy="42" rx="15" ry="21"/></g><path d="M52 30q-3 12 0 24M68 30q3 12 0 24" stroke="#F6E3B5" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="i-pdc" viewBox="0 0 120 90"><ellipse cx="60" cy="76" rx="42" ry="5" fill="#3A2614" opacity=".12"/><rect x="18" y="30" width="84" height="36" rx="16" fill="#E2A650" stroke="#A66F2B" stroke-width="2"/><path d="M40 32q-4 16 0 32M60 32q-4 16 0 32M80 32q-4 16 0 32" stroke="#F6E3B5" stroke-width="2.5" fill="none" stroke-linecap="round"/><ellipse cx="22" cy="48" rx="3.5" ry="8" fill="#3A2614"/><ellipse cx="98" cy="48" rx="3.5" ry="8" fill="#3A2614"/><path d="M30 38q10 6 20 0t20 0 20 0" stroke="#3A2614" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="i-tor" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><rect x="30" y="56" width="60" height="16" rx="4" fill="#C98A45" stroke="#8A5A24" stroke-width="2"/><rect x="30" y="42" width="60" height="14" fill="#F1DD7B" stroke="#C9B24A" stroke-width="2"/><g fill="#FBF4E4" stroke="#D8C9A6" stroke-width="1.5"><circle cx="38" cy="36" r="8"/><circle cx="52" cy="32" r="9"/><circle cx="68" cy="32" r="9"/><circle cx="82" cy="36" r="8"/></g><g fill="#E2A650"><circle cx="52" cy="27" r="2.4"/><circle cx="68" cy="27" r="2.4"/></g></symbol>
+<symbol id="i-ces" viewBox="0 0 120 90"><ellipse cx="60" cy="80" rx="42" ry="5" fill="#3A2614" opacity=".12"/><path d="M30 48q30-44 60 0" fill="none" stroke="#7A4E1D" stroke-width="4"/><rect x="52" y="20" width="14" height="42" rx="7" transform="rotate(20 59 42)" fill="#D9A55B" stroke="#A66F2B" stroke-width="2"/><circle cx="42" cy="44" r="10" fill="#A3C585" stroke="#6E9B4F" stroke-width="2"/><path d="M22 48h76l-8 28H30z" fill="#B07A3E" stroke="#7A4E1D" stroke-width="2"/><path d="M26 58h68M28 68h64M44 48l-3 28M60 48v28M76 48l3 28" stroke="#7A4E1D" stroke-width="1.8" fill="none"/></symbol>
+<symbol id="i-ovo" viewBox="0 0 120 90"><circle cx="60" cy="46" r="34" fill="#fff" stroke="#D9D0BE" stroke-width="2"/><circle cx="60" cy="46" r="25" fill="none" stroke="#EDE6D6" stroke-width="2"/><rect x="40" y="30" width="40" height="32" rx="6" fill="#D9A55B" stroke="#A66F2B" stroke-width="2" transform="rotate(-8 60 46)"/><path d="M44 42q4-8 12-4t10-2 10 6-2 10-10 4-12 0-8-6z" fill="#F4D35E"/><path d="M50 44l3-5M60 42l1-6M70 46l4-4" stroke="#6E9B4F" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-iog" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="26" ry="4" fill="#3A2614" opacity=".12"/><path d="M36 28h48l-6 44H42z" fill="#fff" stroke="#7A4E1D" stroke-width="2.5"/><path d="M41.5 58h37l-1.2 12H42.7z" fill="#E4AE5C"/><g fill="#B07A3E"><circle cx="46" cy="24" r="3.5"/><circle cx="56" cy="21" r="4"/><circle cx="67" cy="22" r="3.5"/><circle cx="76" cy="25" r="3"/></g><circle cx="61" cy="26" r="2.4" fill="#A3C585"/></symbol>
+<symbol id="i-caf" viewBox="0 0 120 90"><ellipse cx="60" cy="72" rx="40" ry="6" fill="#fff" stroke="#D9D0BE" stroke-width="2"/><path d="M82 40h6q8 0 8 8t-8 8h-8" fill="none" stroke="#7A4E1D" stroke-width="3"/><path d="M34 38h48v12q0 18-24 18t-24-18z" fill="#fff" stroke="#7A4E1D" stroke-width="2.5"/><ellipse cx="58" cy="39" rx="24" ry="4" fill="#5A3A1E"/><path d="M50 28q-5-6 0-12M62 28q-5-6 0-12" stroke="#C9973F" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="i-cap" viewBox="0 0 120 90"><circle cx="58" cy="46" r="34" fill="#fff" stroke="#D9D0BE" stroke-width="2"/><rect x="76" y="40" width="22" height="12" rx="6" fill="#fff" stroke="#7A4E1D" stroke-width="2.5"/><circle cx="58" cy="46" r="26" fill="#fff" stroke="#7A4E1D" stroke-width="2.5"/><circle cx="58" cy="46" r="21" fill="#B8793A"/><path d="M58 28q12 8 8 20t-8 10q-12-6-8-18t8-12z" fill="#FBF4E4"/><path d="M58 32v24" stroke="#B8793A" stroke-width="2"/></symbol>
+<symbol id="i-sul" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="24" ry="4" fill="#3A2614" opacity=".12"/><path d="M70 30l12-22" stroke="#A3C585" stroke-width="4" stroke-linecap="round"/><path d="M40 24h40l-5 46q-.5 4-4 4H49q-3.5 0-4-4z" fill="#fff" fill-opacity=".6" stroke="#7A4E1D" stroke-width="2.5"/><path d="M42 34h36l-3.6 36q-.4 3-3.4 3H49q-3 0-3.4-3z" fill="#F2A93B"/><circle cx="42" cy="28" r="11" fill="#F7B84B" stroke="#E08F1A" stroke-width="2"/><path d="M34 28h16M42 20v16M36.3 22.3l11.4 11.4M47.7 22.3l-11.4 11.4" stroke="#FBE2A6" stroke-width="1.6"/></symbol>
+<symbol id="i-fra" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><g transform="rotate(-12 60 48)"><ellipse cx="60" cy="48" rx="40" ry="20" fill="#D9A55B" stroke="#A66F2B" stroke-width="2"/><path d="M26 46q34-14 68 0" fill="none" stroke="#F6E3B5" stroke-width="4" stroke-linecap="round"/><path d="M34 56q26 6 52 0" stroke="#C98A45" stroke-width="2" fill="none"/></g></symbol>
+<symbol id="i-paq" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><g fill="#E8B65E" stroke="#A66F2B" stroke-width="2"><circle cx="40" cy="54" r="17"/><circle cx="80" cy="54" r="17"/><circle cx="60" cy="38" r="17"/></g><g stroke="#F6E3B5" stroke-width="3" stroke-linecap="round" fill="none"><path d="M32 48q4-5 9-5"/><path d="M72 48q4-5 9-5"/><path d="M52 32q4-5 9-5"/></g></symbol>
+<symbol id="i-brg" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><circle cx="60" cy="44" r="23" fill="#4A2C17" stroke="#3A2614" stroke-width="2"/><g stroke-width="3" stroke-linecap="round"><path d="M48 36l4 2" stroke="#F6E3B5"/><path d="M62 30l3 4" stroke="#A3C585"/><path d="M70 42l4-1" stroke="#C9973F"/><path d="M52 50l4 3" stroke="#A3C585"/><path d="M64 54l-1 4" stroke="#F6E3B5"/><path d="M44 46l3-2" stroke="#C9973F"/></g><path d="M36 58h48l-5 17H41z" fill="#C9973F" stroke="#8A6A20" stroke-width="2"/><path d="M46 60l2 14M60 60v14M74 60l-2 14" stroke="#8A6A20" stroke-width="1.5"/></symbol>
+<symbol id="i-cho" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><g transform="rotate(-10 60 46)"><rect x="26" y="20" width="68" height="48" rx="5" fill="#4A2C17" stroke="#3A2614" stroke-width="2"/><path d="M48.7 20v48M71.3 20v48M26 36h68M26 52h68" stroke="#6A4528" stroke-width="2"/><path d="M26 48h68v15q0 5-5 5H31q-5 0-5-5z" fill="#C9973F" stroke="#8A6A20" stroke-width="2"/></g></symbol>
+<symbol id="i-bom" viewBox="0 0 120 90"><rect x="18" y="16" width="84" height="56" rx="8" fill="#7A4E1D" stroke="#3A2614" stroke-width="2"/><rect x="24" y="22" width="72" height="44" rx="5" fill="#5A3A1E"/><g stroke="#C9973F" stroke-width="1.5"><circle cx="36" cy="36" r="8" fill="#3A2614"/><circle cx="52" cy="36" r="8" fill="#A3C585"/><circle cx="68" cy="36" r="8" fill="#3A2614"/><circle cx="84" cy="36" r="8" fill="#C98A45"/><circle cx="36" cy="54" r="8" fill="#C98A45"/><circle cx="52" cy="54" r="8" fill="#3A2614"/><circle cx="68" cy="54" r="8" fill="#A3C585"/><circle cx="84" cy="54" r="8" fill="#3A2614"/></g></symbol>
+<symbol id="i-chi" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="38" ry="4" fill="#3A2614" opacity=".12"/><rect x="78" y="40" width="28" height="9" rx="2" fill="#F6F4EF" stroke="#7A4E1D" stroke-width="2" transform="rotate(20 92 44)"/><g transform="rotate(-8 56 46)"><rect x="30" y="16" width="52" height="56" rx="5" fill="#fff" stroke="#7A4E1D" stroke-width="2.5"/><rect x="30" y="16" width="52" height="16" rx="5" fill="#A3C585" stroke="#7A4E1D" stroke-width="2.5"/><path d="M32 44h48M32 54h48" stroke="#A3C585" stroke-width="5"/><circle cx="56" cy="24" r="3" fill="#fff"/></g></symbol>
+<symbol id="i-bal" viewBox="0 0 120 90"><g stroke="#3A2614" stroke-opacity=".35" stroke-width="1.5"><g transform="rotate(-15 34 58)"><path d="M20 58l-9-7v14zM48 58l9-7v14z" fill="#F6E3B5"/><ellipse cx="34" cy="58" rx="14" ry="9" fill="#C9973F"/></g><g transform="rotate(12 84 56)"><path d="M70 56l-9-7v14zM98 56l9-7v14z" fill="#F6E3B5"/><ellipse cx="84" cy="56" rx="14" ry="9" fill="#A3C585"/></g><g transform="rotate(-5 58 32)"><path d="M44 32l-9-7v14zM72 32l9-7v14z" fill="#F6E3B5"/><ellipse cx="58" cy="32" rx="14" ry="9" fill="#7A4E1D"/></g></g></symbol>
+<symbol id="i-lata" viewBox="0 0 120 90"><ellipse cx="60" cy="80" rx="26" ry="4" fill="#3A2614" opacity=".12"/><rect x="42" y="16" width="36" height="60" rx="6" style="fill:var(--c,#3A2614)" stroke="#3A2614" stroke-width="2"/><ellipse cx="60" cy="18" rx="18" ry="4" fill="#E8E2D2" stroke="#8A8372" stroke-width="1.5"/><rect x="42" y="40" width="36" height="14" fill="#C9973F"/><path d="M42 47q9-6 18 0t18 0" stroke="#fff" stroke-width="2.5" fill="none"/><path d="M48 26v44" stroke="#fff" stroke-opacity=".25" stroke-width="3"/></symbol>
+<symbol id="i-suco" viewBox="0 0 120 90"><ellipse cx="60" cy="78" rx="24" ry="4" fill="#3A2614" opacity=".12"/><path d="M70 30l12-22" stroke="#A3C585" stroke-width="4" stroke-linecap="round"/><path d="M40 24h40l-5 46q-.5 4-4 4H49q-3.5 0-4-4z" fill="#fff" fill-opacity=".6" stroke="#7A4E1D" stroke-width="2.5"/><path d="M42 34h36l-3.6 36q-.4 3-3.4 3H49q-3 0-3.4-3z" style="fill:var(--c,#7B3F6E)"/><ellipse cx="46" cy="24" rx="8" ry="4" transform="rotate(-30 46 24)" fill="#6E9B4F"/><ellipse cx="55" cy="20" rx="7" ry="3.5" transform="rotate(10 55 20)" fill="#A3C585"/></symbol>
+<symbol id="i-agua" viewBox="0 0 120 90"><ellipse cx="60" cy="82" rx="20" ry="3.5" fill="#3A2614" opacity=".12"/><path d="M54 14h12v8q10 6 10 18v36q0 4-4 4H48q-4 0-4-4V40q0-12 10-18z" fill="#DDEBE6" stroke="#7A4E1D" stroke-width="2.5"/><rect x="53" y="7" width="14" height="8" rx="2" fill="#A3C585" stroke="#7A4E1D" stroke-width="2"/><rect x="44" y="46" width="32" height="14" fill="#fff" stroke="#7A4E1D" stroke-width="1.5"/><path d="M48 68q6-4 12 0t12 0" stroke="#fff" stroke-width="2.5" fill="none"/></symbol>
+<symbol id="logo" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <path d="M30 90L24 44l20 18 16-28 16 28 20-18-6 46z" fill="currentColor" opacity=".3"/>
+    <g fill="currentColor" opacity=".3"><circle cx="24" cy="41" r="4"/><circle cx="60" cy="30" r="4"/><circle cx="96" cy="41" r="4"/></g>
+    <g transform="rotate(-35 60 60)" fill="currentColor" stroke="currentColor">
+      <path d="M60 94V28" stroke-width="2" fill="none"/>
+      <ellipse cx="60" cy="26" rx="2.8" ry="6"/>
+      <ellipse cx="55" cy="34" rx="2.8" ry="6" transform="rotate(-25 55 34)"/><ellipse cx="65" cy="34" rx="2.8" ry="6" transform="rotate(25 65 34)"/>
+      <ellipse cx="55" cy="44" rx="2.8" ry="6" transform="rotate(-25 55 44)"/><ellipse cx="65" cy="44" rx="2.8" ry="6" transform="rotate(25 65 44)"/>
+      <ellipse cx="55" cy="54" rx="2.8" ry="6" transform="rotate(-25 55 54)"/><ellipse cx="65" cy="54" rx="2.8" ry="6" transform="rotate(25 65 54)"/>
+    </g>
+    <g transform="rotate(-35 60 60)">
+      <rect x="20" y="52" width="80" height="16" rx="8" fill="currentColor" stroke="var(--slash)" stroke-width="3"/>
+      <g stroke="var(--slash)" stroke-width="2.4" stroke-linecap="round"><path d="M38 63l5-8"/><path d="M52 63l5-8"/><path d="M66 63l5-8"/><path d="M80 63l5-8"/></g>
+    </g>
+  </symbol>
+</defs></svg>
+<div id="live" class="vh" role="status" aria-live="polite"></div>
+
+<header class="top"><div class="wrap">
+  <span class="brand"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#logo"/></svg>Bread Pallace</span>
+  <div class="tools">
+    <button class="ghost" id="openOrders" aria-haspopup="dialog">Meus pedidos</button>
+    <button class="ghost" id="openCart" aria-haspopup="dialog">Pedido<span class="badge" id="cnt" aria-label="0 itens">0</span></button>
+  </div>
+</div></header>
+<div id="hsp" aria-hidden="true"></div>
+
+<div class="hero"><div class="wrap">
+  <div>
+  <h1>Bread Pallace</h1>
+  <p class="slogan">Pão quente. Portas fechadas.</p>
+  <p class="sub">Do forno ao seu andar: peça por aqui e a entrega chega pelo elevador, direto à sua porta.</p>
+  <p id="hi" class="sub" style="margin-top:10px;font-size:1rem"></p>
+  <ul class="facts"><li>Entrega gratuita para moradores</li><li>Chega em 15 a 25 minutos</li><li>Aberto todos os dias, das 6h às 22h</li></ul>
+  </div>
+  <svg class="art" viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="120" r="116" fill="none" stroke="#C9973F" stroke-width="2"/><circle cx="120" cy="120" r="108" fill="#A3C585"/><use href="#i-bag" x="56" y="34" width="132" height="99"/><use href="#i-fer" x="22" y="108" width="108" height="81"/><use href="#i-cro" x="104" y="110" width="112" height="84"/></svg>
+</div></div>
+
+<main>
+<section id="cardapio"><div class="wrap">
+  <h2>Cardápio</h2>
+  <div class="tabs" id="tabs" role="group" aria-label="Categorias do cardápio"></div>
+  <div class="grid" id="grid" data-scope="menu"></div>
+</div></section>
+
+<section class="info" id="info"><div class="wrap">
+  <h2>Informações</h2>
+  <div class="cards">
+    <div><h3>Como funciona</h3><ol><li>Escolha seus itens.</li><li>Informe torre e apartamento.</li><li>Confirme o pedido.</li><li>Receba pelo elevador.</li></ol></div>
+    <div><h3>Horários</h3><p>Todos os dias, das 6h às 22h. Pedidos para o café da manhã podem ser agendados na noite anterior.</p></div>
+    <div><h3>Pagamento</h3><p>Lançado na conta da sua unidade ou cartão na entrega. Sem taxa de entrega para moradores.</p></div>
+    <div><h3>Precisa de ajuda?</h3><p>Fale com a padaria pelo ramal interno ou peça apoio na portaria. O botão Acessibilidade ajusta tamanho do texto e contraste.</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Bread Pallace. Exclusivo para moradores do condomínio.</div></footer>
+
+<div class="bar" id="bar" hidden><button class="btn" id="barBtn"><span id="barN"></span><span id="barT"></span></button></div>
+
+<button class="a11y-fab" id="openA11y" aria-haspopup="dialog" aria-label="Acessibilidade" title="Acessibilidade"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="7.6" r="1.2" fill="currentColor" stroke="none"/><path d="M6.5 10.5l5.5 1 5.5-1M12 11.5v3M12 14.5l-2.5 4M12 14.5l2.5 4"/></svg></button>
+
+<dialog id="cartDlg" aria-labelledby="cartTitle">
+  <div class="dh"><h2 id="cartTitle">Seu pedido</h2><button class="ghost" data-close aria-label="Fechar pedido">Fechar</button></div>
+  <div class="db">
+    <div id="cartView">
+      <div id="cartList" data-scope="cart"></div>
+      <div id="sums"></div>
+      <form id="form" novalidate>
+        <label for="torre">Torre ou bloco</label>
+        <input type="text" id="torre" autocomplete="off" aria-describedby="e1">
+        <div class="err" id="e1"></div>
+        <label for="apto">Apartamento</label>
+        <input type="text" id="apto" inputmode="numeric" autocomplete="off" aria-describedby="e2">
+        <div class="err" id="e2"></div>
+        <fieldset><legend>Quando receber</legend>
+          <label class="opt"><input type="radio" name="when" value="now" checked> Agora</label>
+          <label class="opt"><input type="radio" name="when" value="later"> Agendar horário</label>
+          <input type="time" id="time" aria-label="Horário da entrega" hidden>
+        </fieldset>
+        <fieldset><legend>Pagamento</legend>
+          <label class="opt"><input type="radio" name="pay" value="unit" checked> Lançar na minha unidade</label>
+          <label class="opt"><input type="radio" name="pay" value="card"> Cartão na entrega</label>
+        </fieldset>
+        <label for="obs">Observação (opcional)</label>
+        <textarea id="obs" rows="2"></textarea>
+        <button class="btn" style="width:100%;margin-top:22px" type="submit">Confirmar pedido</button>
+      </form>
+    </div>
+    <div id="doneView" hidden>
+      <h3 id="doneT" style="font-size:1.5rem"></h3>
+      <p id="doneS" style="color:var(--muted);margin-top:6px"></p>
+      <div class="thumbs" id="thumbs"></div>
+      <ol class="seq" id="seq"></ol>
+      <button class="btn" id="again" style="width:100%">Fazer novo pedido</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="a11yDlg" aria-labelledby="a11yTitle">
+  <div class="dh"><h2 id="a11yTitle">Acessibilidade</h2><button class="ghost" data-close aria-label="Fechar acessibilidade">Fechar</button></div>
+  <div class="db">
+    <label class="opt"><input type="checkbox" data-set="big"> Texto maior</label>
+    <label class="opt"><input type="checkbox" data-set="hc"> Alto contraste</label>
+    <label class="opt"><input type="checkbox" data-set="calm"> Reduzir movimento</label>
+    <p style="color:var(--muted);margin-top:16px">Suas escolhas ficam salvas neste aparelho.</p>
+  </div>
+</dialog>
+
+<dialog id="loginDlg" aria-labelledby="loginT">
+  <div class="dh"><h2 id="loginT">Entrar</h2></div>
+  <div class="db">
+    <fieldset><legend>Quem é você?</legend>
+      <label class="opt"><input type="radio" name="role" value="res" checked> Sou morador</label>
+      <label class="opt"><input type="radio" name="role" value="staff"> Sou da padaria</label>
+    </fieldset>
+    <form id="loginForm" novalidate>
+      <div id="fRes"><label for="lt">Torre ou bloco</label><input type="text" id="lt" autocomplete="off"><label for="la">Apartamento</label><input type="text" id="la" inputmode="numeric" autocomplete="off"></div>
+      <div id="fStaff" hidden><label for="lu">Usuário</label><input type="text" id="lu" autocomplete="off"></div>
+      <label for="lp">Senha</label><input type="password" id="lp" autocomplete="off">
+      <div class="err" id="le" role="alert"></div>
+      <button class="btn" type="submit" style="width:100%;margin-top:18px">Entrar</button>
+      <button class="ghost" type="button" id="mkAcc" style="width:100%;margin-top:10px">Criar acesso de morador</button>
+    </form>
+    <p class="note">Modo de teste: as contas ficam só neste aparelho e o login não é seguro. Use uma senha de teste, nunca a sua senha real.<br>Morador de exemplo: torre A, apartamento 101, senha 1234.<br>Padaria: usuário admin (ou padaria), senha 1234.</p>
+  </div>
+</dialog>
+
+<dialog id="ordersDlg" aria-labelledby="ordT">
+  <div class="dh"><h2 id="ordT">Meus pedidos</h2><button class="ghost" data-close aria-label="Fechar pedidos">Fechar</button></div>
+  <div class="db"><p id="who" class="muted"></p><div id="ordList"></div><button class="ghost" id="logout" style="margin-top:18px;width:100%">Sair da conta</button></div>
+</dialog>
+
+<dialog id="staffDlg" aria-labelledby="stT">
+  <div class="dh"><h2 id="stT">Painel da padaria</h2><button class="ghost" id="logout2">Sair</button></div>
+  <div class="db">
+    <div class="tabs" id="stTabs" role="group" aria-label="Seções do painel"><button data-st="orders" aria-pressed="true">Pedidos</button><button data-st="prods" aria-pressed="false">Produtos</button></div>
+    <div id="stOrders"><p id="stSum" class="muted"></p><div id="stList"></div></div>
+    <div id="stProds" hidden><button class="btn" id="addProd">Novo produto</button><div id="prodList"></div></div>
+  </div>
+</dialog>
+
+<dialog id="prodDlg" aria-labelledby="pdT">
+  <div class="dh"><h2 id="pdT">Produto</h2><button class="ghost" type="button" id="pdX">Fechar</button></div>
+  <div class="db"><form id="prodForm" novalidate>
+    <label for="pn">Nome</label><input type="text" id="pn" autocomplete="off">
+    <label for="pd">Descrição</label><textarea id="pd" rows="2"></textarea>
+    <label for="pp">Preço (R$)</label><input type="text" id="pp" inputmode="decimal" autocomplete="off">
+    <label for="pc">Categoria</label><input type="text" id="pc" list="catl" autocomplete="off"><datalist id="catl"></datalist>
+    <label for="pi">Ilustração</label><select id="pi"></select>
+    <label for="pf">Foto (opcional)</label><input type="file" id="pf" accept="image/*">
+    <div class="pv" id="pv" hidden><img id="pvImg" alt="Prévia da foto" style="width:88px;height:88px;object-fit:cover;border-radius:10px"><button class="ghost" type="button" id="rmImg">Remover foto</button></div>
+    <label class="opt" style="margin-top:14px"><input type="checkbox" id="pa" checked> Disponível no cardápio</label>
+    <div class="err" id="pe" role="alert"></div>
+    <button class="btn" type="submit" style="width:100%;margin-top:16px">Salvar produto</button>
+    <button class="ghost" type="button" id="delProd" style="width:100%;margin-top:10px" hidden>Excluir produto</button>
+  </form></div>
+</dialog>
+
+<script>
+const $=s=>document.querySelector(s);
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const BASE=[
+{id:'fra',c:'Pães',n:'Pão francês',d:'Casquinha fina e crocante, saindo do forno de hora em hora. Preço por unidade.',p:3.5},
+{id:'bag',c:'Pães',n:'Baguete tradicional',d:'Casca crocante e miolo aberto, assado a cada hora.',p:18},
+{id:'fer',c:'Pães',n:'Pão de fermentação natural',d:'Massa de 48 horas, casca escura e sabor profundo.',p:32},
+{id:'bri',c:'Pães',n:'Brioche de manteiga',d:'Macio, amanteigado, ótimo para o café da manhã.',p:26},
+{id:'paq',c:'Pães',n:'Pão de queijo',d:'Casquinha crocante, interior elástico e quente. Preço por unidade.',p:6},
+{id:'cro',c:'Doces',n:'Croissant de manteiga',d:'Folhado em camadas, saindo do forno às 6h.',p:16},
+{id:'pdc',c:'Doces',n:'Pain au chocolat',d:'Dois bastões de chocolate meio amargo.',p:18},
+{id:'tor',c:'Doces',n:'Torta de limão',d:'Base crocante, creme cítrico e merengue maçaricado.',p:22},
+{id:'brg',c:'Chocolates',n:'Brigadeiro gourmet',d:'Chocolate belga com granulado crocante.',p:9},
+{id:'cho',c:'Chocolates',n:'Barra de chocolate 70% cacau',d:'Barra de 80 g, intensa e levemente amarga.',p:24},
+{id:'bom',c:'Chocolates',n:'Caixa de bombons sortidos',d:'Oito bombons de sabores variados.',p:48},
+{id:'ces',c:'Café da manhã',n:'Cesta da manhã para dois',d:'Pães, frios, geleia, frutas e suco.',p:89},
+{id:'ovo',c:'Café da manhã',n:'Ovos mexidos com torrada',d:'Cremosos, com fermentação natural tostada.',p:34},
+{id:'iog',c:'Café da manhã',n:'Iogurte com granola',d:'Iogurte natural, granola da casa e mel.',p:22},
+{id:'caf',c:'Bebidas',n:'Café coado',d:'Grãos selecionados, passado na hora.',p:9},
+{id:'cap',c:'Bebidas',n:'Cappuccino',d:'Espresso duplo, leite vaporizado e cacau.',p:16},
+{id:'sul',c:'Bebidas',n:'Suco de laranja natural',d:'Espremido na hora, sem açúcar.',p:14},
+{id:'ref',s:'lata',col:'#3A2614',c:'Bebidas',n:'Refrigerante cola',d:'Lata de 350 ml, bem gelada.',p:9},
+{id:'gua',s:'lata',col:'#5E8A3E',c:'Bebidas',n:'Refrigerante guaraná',d:'Lata de 350 ml, bem gelada.',p:9},
+{id:'uva',s:'suco',col:'#7B3F6E',c:'Bebidas',n:'Suco de uva integral',d:'Sem adição de açúcar, copo de 300 ml.',p:14},
+{id:'aba',s:'suco',col:'#F1D95A',c:'Bebidas',n:'Suco de abacaxi com hortelã',d:'Fresco, batido na hora.',p:14},
+{id:'agu',s:'agua',c:'Bebidas',n:'Água mineral',d:'Garrafa de 500 ml. Informe na observação se prefere com gás.',p:7},
+{id:'chi',c:'Conveniência',n:'Chiclete Trident',d:'Pacote com 8 unidades. Informe o sabor na observação.',p:6},
+{id:'bal',c:'Conveniência',n:'Balas sortidas',d:'Pacote com sabores variados.',p:12}];
+const catList=()=>['Todos',...new Set(items.map(i=>i.c))];
+let cart={},cat='Todos',last=null,timer=null;
+const mem={};
+const ls={get(k,f){let v=null;try{v=localStorage.getItem(k)}catch(e){}if(v===null)v=mem[k]??null;try{return v===null?f:(JSON.parse(v)??f)}catch(e){return f}},set(k,v){mem[k]=JSON.stringify(v);try{localStorage.setItem(k,mem[k])}catch(e){}}};
+cart=ls.get('bp-cart',{});
+let items=ls.get('bp-items',null)||BASE.map(x=>({...x}));let ivLocal=ls.get('bp-iv',0);
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const total=()=>items.reduce((s,i)=>s+(cart[i.id]||0)*i.p,0);
+const say=t=>{$('#live').textContent='';setTimeout(()=>$('#live').textContent=t,50)};
+const tint={'Pães':'#F2E2BC','Doces':'#DCE9C9','Café da manhã':'#ECDCC4','Bebidas':'#E3EDD3','Chocolates':'#E6D2C0','Conveniência':'#E9E6D8'};
+const pic=(i,c)=>`<span class="${c}" style="background-color:${tint[i.c]||'#EFE6D4'}">${i.img?`<img src="${i.img}" alt="">`:`<svg viewBox="0 0 120 90" aria-hidden="true"><use href="#i-${i.s||i.id}" width="120" height="90" style="--c:${i.col||'#000'}"/></svg>`}</span>`;
+const stepper=i=>{if(i.off)return '<span class="st">Indisponível</span>';const q=cart[i.id]||0;return q?`<div class="step" role="group" aria-label="Quantidade de ${esc(i.n)}"><button data-act="dec" data-id="${i.id}" aria-label="Remover um ${esc(i.n)}">−</button><output>${q}</output><button data-act="inc" data-id="${i.id}" aria-label="Adicionar mais um ${esc(i.n)}">+</button></div>`:`<button class="btn" data-act="inc" data-id="${i.id}" aria-label="Adicionar ${esc(i.n)}">Adicionar</button>`};
+
+function render(){
+  let ch=false;for(const k of Object.keys(cart)){const it=items.find(x=>x.id===k);if(!it||it.off){delete cart[k];ch=true}}if(ch)ls.set('bp-cart',cart);
+  if(!catList().includes(cat))cat='Todos';
+  $('#tabs').innerHTML=catList().map(c=>`<button data-cat="${esc(c)}" aria-pressed="${c===cat}">${esc(c)}</button>`).join('');
+  $('#grid').innerHTML=items.filter(i=>cat==='Todos'||i.c===cat).map(i=>`<article class="item${i.off?' off':''}">${pic(i,'ph')}<div class="body"><h3>${esc(i.n)}</h3><p class="d">${esc(i.d)}</p><div class="row"><span class="price">${brl(i.p)}</span>${stepper(i)}</div></div></article>`).join('');
+  const n=count(),t=total();
+  $('#cnt').textContent=n;$('#cnt').setAttribute('aria-label',n+(n===1?' item':' itens'));
+  $('#bar').hidden=n===0;document.body.classList.toggle('hasbar',n>0);$('#barN').textContent=`Ver pedido (${n} ${n===1?'item':'itens'})`;$('#barT').textContent=brl(t);
+  const inCart=items.filter(i=>cart[i.id]);
+  $('#cartList').innerHTML=inCart.length?inCart.map(i=>`<div class="line"><div class="lt">${pic(i,'th')}<div><strong>${esc(i.n)}</strong><div class="price">${brl(i.p*cart[i.id])}</div></div></div>${stepper(i)}</div>`).join(''):'<p class="empty">Seu pedido está vazio. Escolha algo no cardápio.</p>';
+  $('#sums').innerHTML=inCart.length?`<div class="tot"><span>Subtotal</span><span>${brl(t)}</span></div><div class="tot"><span>Entrega pelo elevador</span><span>Grátis</span></div><div class="tot big2"><span>Total</span><span>${brl(t)}</span></div>`:'';
+  $('#form').hidden=!inCart.length;
+  if(last){const el=document.querySelector(`[data-scope="${last.s}"] [data-act="${last.a}"][data-id="${last.id}"]`)||document.querySelector(`[data-scope="${last.s}"] [data-act="inc"][data-id="${last.id}"]`);if(el)el.focus();last=null}
+}
+function change(id,d,s,a){const q=Math.max(0,(cart[id]||0)+d);q?cart[id]=q:delete cart[id];ls.set('bp-cart',cart);last={s,a,id};render();const it=items.find(i=>i.id===id);say(q?`${it.n}: ${q} no pedido`:`${it.n} removido`)}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b){
+    if(b.dataset.act){change(b.dataset.id,b.dataset.act==='inc'?1:-1,b.closest('[data-scope]').dataset.scope,b.dataset.act)}
+    else if(b.dataset.cat){cat=b.dataset.cat;render();document.querySelector(`[data-cat="${cat}"]`).focus()}
+    else if(b.dataset.tog){toggleProd(b.dataset.tog)}
+    else if(b.dataset.edit){openEditor(b.dataset.edit)}
+    else if(b.dataset.st){stTab(b.dataset.st)}
+    else if(b.dataset.adv){advance(+b.dataset.adv)}
+    else if(b.hasAttribute('data-close')){b.closest('dialog').close()}
+  }
+  if(e.target.tagName==='DIALOG'&&!['loginDlg','staffDlg','prodDlg'].includes(e.target.id))e.target.close();
+});
+const openCart=()=>{const se=sess();if(se&&se.role==='res'){if(!$('#torre').value)$('#torre').value=se.t;if(!$('#apto').value)$('#apto').value=se.a}$('#cartDlg').showModal()};
+$('#openCart').onclick=$('#barBtn').onclick=openCart;
+$('#openA11y').onclick=()=>$('#a11yDlg').showModal();
+
+document.querySelectorAll('[data-set]').forEach(c=>{
+  const k=c.dataset.set,on=ls.get('bp-'+k,false);c.checked=on;document.documentElement.classList.toggle(k,on);
+  c.onchange=()=>{document.documentElement.classList.toggle(k,c.checked);ls.set('bp-'+k,c.checked)};
+});
+document.querySelectorAll('[name=when]').forEach(r=>r.onchange=()=>{$('#time').hidden=document.querySelector('[name=when]:checked').value!=='later'});
+
+const STEPS=['Pedido recebido','Saindo do forno','A caminho pelo elevador','Entregue na sua porta'];
+let watchId=null,lastSt=-1;
+function track(s){
+  if(s===lastSt)return;lastSt=s;
+  $('#seq').innerHTML=STEPS.map((t,i)=>`<li class="${i<s?'done':''}" ${i===s?'aria-current="step"':''}>${t}</li>`).join('');
+  say(STEPS[s]);
+}
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const t=$('#torre'),a=$('#apto');let ok=true;
+  [[t,'#e1','Informe a torre ou bloco.'],[a,'#e2','Informe o número do apartamento.']].forEach(([el,id,m])=>{
+    const bad=!el.value.trim();el.setAttribute('aria-invalid',bad);$(id).textContent=bad?m:'';if(bad&&ok){el.focus();ok=false}});
+  if(!ok)return;
+  const num=Math.floor(1000+Math.random()*9000);
+  $('#doneT').textContent=`Pedido #${num} confirmado`;
+  $('#doneS').textContent=`Entrega em ${t.value.trim()}, apartamento ${a.value.trim()}.`;
+  $('#cartView').hidden=true;$('#doneView').hidden=false;$('#cartTitle').textContent='Acompanhe seu pedido';
+  const ord={id:num,t:t.value.trim(),a:a.value.trim(),lines:items.filter(i=>cart[i.id]).map(i=>({n:i.n,q:cart[i.id],p:i.p})),total:total(),when:document.querySelector('[name=when]:checked').value==='later'?('às '+($('#time').value||'horário a combinar')):'agora',pay:document.querySelector('[name=pay]:checked').value==='card'?'Cartão na entrega':'Lançar na unidade',obs:$('#obs').value.trim(),status:0,ts:Date.now()};
+  const all=ls.get('bp-orders',[]);all.push(ord);ls.set('bp-orders',all);lastSt=-1;watchId=num;track(0);
+  $('#thumbs').innerHTML=items.filter(i=>cart[i.id]).map(i=>pic(i,'th')).join('');cart={};ls.set('bp-cart',cart);render();$('#doneT').setAttribute('tabindex','-1');$('#doneT').focus();
+});
+$('#again').onclick=()=>{watchId=null;lastSt=-1;clearInterval(timer);$('#cartView').hidden=false;$('#doneView').hidden=true;$('#cartTitle').textContent='Seu pedido';$('#cartDlg').close()};
+let memS;
+const ss={get(){if(memS!==undefined)return memS;try{return JSON.parse(sessionStorage.getItem('bp-s'))}catch(e){return null}},set(v){memS=v;try{sessionStorage.setItem('bp-s',JSON.stringify(v))}catch(e){}}};
+const sess=()=>ss.get();
+const users=()=>{let u=ls.get('bp-users',null);if(!u){u=[{t:'A',a:'101',p:'1234'}];ls.set('bp-users',u)}return u};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=ts=>new Date(ts).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+const linesTxt=o=>o.lines.map(l=>`${l.q}× ${esc(l.n)}`).join(', ');
+let keyO='',keyS='';
+function renderOrders(all,force){
+  const se=sess();if(!se||se.role!=='res')return;
+  const mine=all.filter(o=>o.t===se.t&&o.a===se.a).sort((x,y)=>y.ts-x.ts);
+  const k=JSON.stringify(mine);if(!force&&k===keyO)return;keyO=k;
+  $('#who').textContent=`Conectado: torre ${se.t}, apartamento ${se.a}.`;
+  $('#ordList').innerHTML=mine.length?mine.map(o=>`<div class="ord"><h3>Pedido #${o.id}</h3><p class="muted">${fmt(o.ts)}</p><p>${linesTxt(o)}</p><p><span class="st">${STEPS[o.status]}</span><strong>${brl(o.total)}</strong></p></div>`).join(''):'<p class="empty">Você ainda não fez pedidos.</p>';
+}
+function renderStaff(all,force){
+  const k=JSON.stringify(all);if(!force&&k===keyS)return;keyS=k;
+  const act=all.filter(o=>o.status<3).sort((x,y)=>x.ts-y.ts),fin=all.filter(o=>o.status===3).sort((x,y)=>y.ts-x.ts).slice(0,5);
+  $('#stSum').textContent=`${act.length} em andamento. ${all.length-act.length} entregues.`;
+  const card=o=>`<div class="ord"><h3>#${o.id}: torre ${esc(o.t)}, apto ${esc(o.a)}</h3><p class="muted">${fmt(o.ts)}. Entrega ${esc(o.when)}. ${esc(o.pay)}.</p><p>${linesTxt(o)}</p>${o.obs?`<p>Obs: ${esc(o.obs)}</p>`:''}<p><span class="st">${STEPS[o.status]}</span><strong>${brl(o.total)}</strong></p>${o.status<3?`<button class="btn" data-adv="${o.id}" style="margin-top:10px">Avançar: ${STEPS[o.status+1]}</button>`:''}</div>`;
+  $('#stList').innerHTML=act.concat(fin).map(card).join('')||'<p class="empty">Nenhum pedido ainda. Faça um pedido como morador em outra aba e ele aparece aqui.</p>';
+}
+function advance(id){
+  const all=ls.get('bp-orders',[]),o=all.find(x=>x.id===id);
+  if(o&&o.status<3){o.status++;ls.set('bp-orders',all);renderStaff(all,true);say(`Pedido ${id}: ${STEPS[o.status]}`);const b=document.querySelector(`[data-adv="${id}"]`);if(b)b.focus()}
+}
+function sync(){
+  const all=ls.get('bp-orders',[]);
+  if(watchId){const o=all.find(x=>x.id===watchId);if(o)track(o.status)}
+  const iv=ls.get('bp-iv',0);if(iv!==ivLocal){ivLocal=iv;const st=ls.get('bp-items',null);if(st){items=st;render();if($('#staffDlg').open&&!$('#stProds').hidden)renderProds()}}
+  if($('#ordersDlg').open)renderOrders(all);
+  if($('#staffDlg').open)renderStaff(all);
+}
+setInterval(sync,2000);addEventListener('storage',sync);
+
+const roleV=()=>document.querySelector('[name=role]:checked').value;
+document.querySelectorAll('[name=role]').forEach(r=>r.onchange=()=>{const st=roleV()==='staff';$('#fRes').hidden=st;$('#fStaff').hidden=!st;$('#mkAcc').hidden=st;$('#le').textContent=''});
+function enter(se){ss.set(se);$('#lp').value='';$('#le').textContent='';$('#loginDlg').close();boot()}
+$('#loginForm').addEventListener('submit',e=>{
+  e.preventDefault();const p=$('#lp').value;
+  if(roleV()==='staff'){if(['padaria','admin'].includes($('#lu').value.trim().toLowerCase())&&p==='1234')enter({role:'staff'});else $('#le').textContent='Usuário ou senha incorretos.';return}
+  const t=$('#lt').value.trim().toUpperCase(),a=$('#la').value.trim();
+  if(users().some(u=>u.t===t&&u.a===a&&u.p===p))enter({role:'res',t,a});else $('#le').textContent='Torre, apartamento ou senha incorretos.';
+});
+$('#mkAcc').onclick=()=>{
+  const t=$('#lt').value.trim().toUpperCase(),a=$('#la').value.trim(),p=$('#lp').value,er=m=>{$('#le').textContent=m};
+  if(!t||!a)return er('Informe torre e apartamento.');
+  if(p.length<4)return er('A senha precisa ter pelo menos 4 caracteres.');
+  const u=users();if(u.some(x=>x.t===t&&x.a===a))return er('Este apartamento já tem acesso. Use Entrar.');
+  u.push({t,a,p});ls.set('bp-users',u);enter({role:'res',t,a});
+};
+function logout(){ss.set(null);watchId=null;lastSt=-1;['ordersDlg','cartDlg','staffDlg'].forEach(id=>$('#'+id).close());boot()}
+$('#logout').onclick=$('#logout2').onclick=logout;
+$('#openOrders').onclick=()=>{renderOrders(ls.get('bp-orders',[]),true);$('#ordersDlg').showModal()};
+['loginDlg','staffDlg'].forEach(id=>$('#'+id).addEventListener('cancel',e=>e.preventDefault()));
+function boot(){
+  const se=sess();
+  $('#hi').textContent=se&&se.role==='res'?`Olá! Entrega para a torre ${se.t}, apartamento ${se.a}.`:'';
+  if(!se){if(!$('#loginDlg').open)$('#loginDlg').showModal();return}
+  if(se.role==='staff'){renderStaff(ls.get('bp-orders',[]),true);if(!$('#staffDlg').open)$('#staffDlg').showModal()}
+}
+
+const ICONS=[['fra','Pão francês'],['bag','Baguete'],['fer','Pão redondo'],['bri','Brioche'],['paq','Pão de queijo'],['cro','Croissant'],['pdc','Folhado de chocolate'],['tor','Torta'],['brg','Brigadeiro'],['cho','Barra de chocolate'],['bom','Bombons'],['ces','Cesta'],['ovo','Ovos'],['iog','Iogurte'],['caf','Café'],['cap','Cappuccino'],['sul','Suco de laranja'],['suco','Suco'],['lata','Refrigerante'],['agua','Água'],['chi','Chiclete'],['bal','Balas']];
+$('#pi').innerHTML=ICONS.map(([v,t])=>`<option value="${v}">${t}</option>`).join('');
+let editId=null,editImg,confirmDel=false;
+function saveItems(){ls.set('bp-items',items);ivLocal=Date.now();ls.set('bp-iv',ivLocal)}
+function renderProds(){
+  $('#prodList').innerHTML=items.map(i=>`<div class="line"><div class="lt">${pic(i,'th')}<div><strong>${esc(i.n)}${i.off?' (indisponível)':''}</strong><div class="muted">${esc(i.c)}. ${brl(i.p)}</div></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="ghost" data-edit="${i.id}" aria-label="Editar ${esc(i.n)}">Editar</button><button class="ghost" data-tog="${i.id}" aria-label="${i.off?'Ativar':'Pausar'} ${esc(i.n)}">${i.off?'Ativar':'Pausar'}</button></div></div>`).join('');
+}
+function stTab(t){const o=t==='orders';$('#stOrders').hidden=!o;$('#stProds').hidden=o;document.querySelectorAll('[data-st]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.st===t)));if(!o)renderProds()}
+function toggleProd(id){const it=items.find(x=>x.id===id);if(!it)return;it.off=!it.off;saveItems();render();renderProds();say(`${it.n}: ${it.off?'indisponível':'disponível'}`);const b=document.querySelector(`[data-tog="${id}"]`);if(b)b.focus()}
+function showPv(src){$('#pv').hidden=!src;if(src)$('#pvImg').src=src}
+function openEditor(id){
+  const it=id==='new'?null:items.find(x=>x.id===id);editId=it?it.id:null;editImg=undefined;confirmDel=false;
+  $('#pdT').textContent=it?'Editar produto':'Novo produto';
+  $('#pn').value=it?it.n:'';$('#pd').value=it?it.d:'';$('#pp').value=it?String(it.p).replace('.',','):'';$('#pc').value=it?it.c:(catList()[1]||'');
+  $('#pi').value=it?(it.s||it.id):'fra';if(!$('#pi').value)$('#pi').value='fra';
+  $('#pa').checked=it?!it.off:true;$('#pf').value='';showPv(it&&it.img);
+  $('#pe').textContent='';$('#delProd').hidden=!it;$('#delProd').textContent='Excluir produto';
+  $('#catl').innerHTML=catList().slice(1).map(c=>`<option value="${esc(c)}">`).join('');
+  $('#prodDlg').showModal();$('#pn').focus();
+}
+function readPhoto(f){return new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const S=360,c=document.createElement('canvas');c.width=c.height=S;const m=Math.min(im.width,im.height);c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,S,S);ok(c.toDataURL('image/jpeg',.8))};im.onerror=no;im.src=fr.result};fr.onerror=no;fr.readAsDataURL(f)})}
+$('#pf').onchange=()=>{const f=$('#pf').files[0];if(!f)return;readPhoto(f).then(d=>{editImg=d;showPv(d)}).catch(()=>{$('#pe').textContent='Não consegui ler essa foto. Tente outra imagem.'})};
+$('#rmImg').onclick=()=>{editImg=null;$('#pf').value='';showPv(null)};
+$('#addProd').onclick=()=>openEditor('new');
+$('#pdX').onclick=()=>$('#prodDlg').close();
+$('#delProd').onclick=()=>{
+  if(!confirmDel){confirmDel=true;$('#delProd').textContent='Toque de novo para confirmar a exclusão';return}
+  items=items.filter(x=>x.id!==editId);saveItems();$('#prodDlg').close();render();renderProds();say('Produto excluído');
+};
+$('#prodForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=$('#pn').value.trim(),c=$('#pc').value.trim(),d=$('#pd').value.trim(),pr=parseFloat($('#pp').value.replace(',','.')),er=m=>{$('#pe').textContent=m};
+  if(!n)return er('Informe o nome do produto.');
+  if(!c)return er('Informe a categoria.');
+  if(!(pr>=0)||$('#pp').value.trim()==='')return er('Informe um preço válido, por exemplo 12,50.');
+  let it=editId?items.find(x=>x.id===editId):null;
+  if(!it){it={id:'p'+Date.now()};items.push(it)}
+  Object.assign(it,{n,c,d,p:Math.round(pr*100)/100,s:$('#pi').value,off:!$('#pa').checked});
+  if(it.s==='lata'&&!it.col)it.col='#3A2614';if(it.s==='suco'&&!it.col)it.col='#7B3F6E';
+  if(editImg!==undefined){if(editImg)it.img=editImg;else delete it.img}
+  try{saveItems()}catch(x){}
+  $('#prodDlg').close();render();renderProds();say(`${n} salvo`);
+});
+render();
+boot();
+const hd=document.querySelector('header.top'),sp=$('#hsp');
+const sizeSp=()=>{if(!hd.classList.contains('sm'))sp.style.height=hd.offsetHeight+'px'};
+const onScroll=()=>{const y=window.scrollY;if(y>40)hd.classList.add('sm');else if(y<10)hd.classList.remove('sm')};
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',sizeSp);
+if('ResizeObserver' in window)new ResizeObserver(sizeSp).observe(hd);
+sizeSp();onScroll();
+</script>
+<script>
+if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script>
+</body>
+</html>
